@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!--Lưu ý chèn js theo thứ tự main cần sử dụng danhsachsinhvien, danhsachsinhvien cần sử dụng sinhvien-->
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+	<div class="logo"></div>
+	<div class="container">
+		<h2>Thông tin sinh viên</h2>
+		<form>
+			<div class="form-group">
+				<label for="masv">Mã SV:</label>
+				<input onkeyup="validateID()" type="text" class="form-control" id="masv" placeholder="Nhập MaSV"
+					name=" StudentID ">
+				<span id="ID__isEmpty"></span>
+				<span id="ID__length"></span>
+				<span id="ID__isNumber"></span>
+			</div>
+			<div class="form-group">
+				<label for="hoten">Họ tên:</label>
+				<input  onkeyup="validateName()" maxlength="20" type="text" class="form-control" id="hoten" placeholder="Nhập Họ tên"
+					name=" Name ">
+				<span id="name__isEmpty"></span>
+				<span id="name__isLetters"></span>
+			</div>
+			<div class="form-group">
+				<label for="cmnd">CMND:</label>
+				<input  onkeyup="validateCMND()" type="text" class="form-control" id="cmnd" placeholder="Nhập CMND" name=" CMND ">
+				<span id="cmnd__isEmpty"></span>
+				<span id="cmnd__isNumber"></span>
+			</div>
+			<div class="form-group">
+				<label for="sdt">Điện thoại:</label>
+				<input  onkeyup="validatePhone()" maxlength="9" type="text" class="form-control" id="sdt" placeholder="Nhập SDT" name=" Phone ">
+				<span id="phone__isEmpty"></span>
+				<span id="phone__isNumber"></span>
+			</div>
+
+			<div class="form-group">
+				<label for="email">Email:</label>
+				<input min="0" max="10" type="email" class="form-control" id="email" placeholder="Nhập Email"
+					name=" Email ">
+				<span id="email__isEmpty"></span>
+			</div>
+			<div class="form-group">
+				<label for="Toan">Toán:</label>
+				<input min="0" max="10" type="number" class="form-control" id="Toan" placeholder="Nhập Toán"
+					name=" Math score ">
+				<span id="math__isEmpty"></span>
+				<span id="math__isNumber"></span>
+			</div>
+			<div class="form-group">
+				<label for="Ly">Lý:</label>
+				<input min="0" max="10" type="number" class="form-control" id="Ly" placeholder="Nhập Lý"
+					name=" Physic score ">
+				<span id="physic__isEmpty"></span>
+				<span id="physic__isNumber"></span>
+			</div>
+			<div class="form-group">
+				<label for="Hoa">Hoá:</label>
+				<input type="number" class="form-control" id="Hoa" placeholder="Nhập Hóa" name=" Chemical score ">
+				<span id="chemical__isEmpty"></span>
+				<span id="chemical__isNumber"></span>
+			</div>
+			<button type="button" class="btn btn-success" onclick="addStudent()">Thêm sinh viên</button>
+			<button type="button" class="btn btn-primary" onclick="saveNewInfo()"> Lưu</button>
+		</form>
+		<div style="float: right;">
+			<button class="btn btn-success" onclick="SetStorage()">Lưu storage</button>
+			<button class="btn btn-primary" onclick="GetStorage()">Lấy storage</button>
+			<button class="btn btn-danger" onclick="deleteStudents()">Xóa sinh viên</button>
+		</div>
+	</div>
+	<!--table bootstrap 4 -->
+	<div class="clearfix"></div>
+	<br>
+	<div class="container">
+		<div class="right">
+			<div class="input-group">
+				<input type="text" id="tukhoa" onkeyup="searchByName()" onchange="searchByName()" class="form-control"
+					placeholder="Nhập vào họ tên ...">
+				<span class="input-group-btn">
+					<button class="btn btn-secondary" onclick="searchByName()" type="button">Tìm kiếm</button>
+				</span>
+			</div>
+			<br />
+			<div class="alert alert-success" id="ThongBao"></div>
+		</div>
+		<h2>Danh sách sinh viên</h2>
+		<p> </p>
+		<table id="TableSinhVien" class="table">
+			<thead>
+				<tr>
+					<th></th>
+					<th>MaSV</th>
+					<th>HoTen</th>
+					<th>Email</th>
+					<th>CMND</th>
+					<th>Điện thoại</th>
+					<th>Điểm TB</th>
+					<th>Xếp loại</th>
+				</tr>
+			</thead>
+			<tbody id="tbodySinhVien">
+
+			</tbody>
+		</table>
+	</div>
+	<script src="./Student.js"></script>
+	<script src="./StudentList.js"></script>
+	<script src="./Validation.js"></script>
+	<script src="./main.js"></script>
+
+</html>
